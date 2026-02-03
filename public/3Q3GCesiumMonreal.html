@@ -14,13 +14,12 @@
     <script src="script.js" defer></script>
 
    <style>
-    body{
-        padding: 25px;
-        font-family:'Courier New', Courier, monospace;
-        width: 80%;
-        margin-left: 10%;
-
-        }
+        body{
+          padding: 25px;
+          font-family: arial;
+          width: 80%;
+          margin-left: 10%;
+          }
 
         .title {
             color: #5C6AC4;
@@ -38,112 +37,202 @@
         label {
              margin: 5%;
         }
-
-        input:focus{
-          background-color: yellow;
+        .blur {
+          border: 2px solid red;
+          background-color: rgb(253, 109, 109);
         }
-
+        .focus {
+          border: 2px solid rgb(0, 38, 255);
+          background-color: rgb(128, 162, 255);
+        }        
+        .buttons {
+          text-align: center;
+        }
     </style>
-
     
   </head>
   <body>
-     <header>
-    </header>
     <section>
-      <h1 class="title">Club Sign-up Page</h1>
-      <form id="dForm" method="post" onsubmit="confirmSubmission(event)" onreset="confirmReset(event)">
+      <h1 class="title">Sign-up Page</h1>
+
+      <a href="viewSignUps.html">List of Students</a>
+
+      <form id="dForm" method="post" onsubmit = "confirmSubmission(event)" onreset = "confirmReset(event)">
         <fieldset>
           <legend>Your Credentials</legend><br/>
-          <label> StudentID : 
-            <input type="number" name="studentid" id="studentid" required  onblur="missingInformation(this)"  />
+          <label> StudentID: 
+            <input type="number" name="number" id="number" required onblur = "bblur(this)" onfocus = "ffocus(this)"/>
           </label><br/><br/>
-          <label> Full Name :
-            <input type="text" name="fname" id="fname" required  onblur="missingInformation(this)" />
+
+          <label> Full Name: 
+            <input type="text" name="uname" id="uname" required onblur = "bblur(this)" onfocus = "ffocus(this)"/>
           </label><br/><br/>
-          <label> Birthday :
-            <input type="date" name="birthday" id="birthday"  onblur="missingInformation(this)"  />
-          </label><br/><br/>
+
+          <label> Date Of Birth :
+            <input type="date" name="dob" id="dob" required onblur = "bblur(this)" onfocus = "ffocus(this)"/>
+          </label><br/><br/>   
+
           <label> Email Address :
-            <input type="email" name="email" id="email"  onblur="missingInformation(this)"  />
+            <input type="email" name="email" id="email" required onblur = "bblur(this)" onfocus = "ffocus(this)"/>
           </label><br/><br/>
-          <label> Mobile Phone :
-            <input type="text" name="phone" id="phone"  onblur="missingInformation(this)"  />
+
+          <label> Mobile Phone: 
+            <input type="text" name="phone" id="phone" required onblur = "bblur(this)" onfocus = "ffocus(this)"/>
           </label><br/><br/>
-          <label for="gradelevel">Grade Level:</label>
-          <select name="gradelevel" id="gradelevel" required>
-              <option value="7">Grade 7</option>
-              <option value="8">Grade 8</option>
-              <option value="9">Grade 9</option>
-              <option value="10">Grade 10</option>
-              <option value="11">Grade 11</option>
-              <option value="12">Grade 12</option>
-          </select><br><br>
+
+          <label> Grade Level: 
+            <select name="Grade" id="Grade" required onblur = "bblur(this)" onfocus = "ffocus(this)" >
+            <option value=""></option>
+            <option value="Grade7">Grade 7</option>
+            <option value="Grade8">Grade 8</option>
+            <option value="Grade9">Grade 9</option>
+            <option value="Grade10">Grade 10</option>
+            <option value="Grade11">Grade 11</option> 
+            <option value="Grade12">Grade 12</option>
+          </label><br/><br/>
+
+
           <label> Intern/Extern :
-            <input type="radio" name="i/e" value="Intern" /> Intern
-            <input type="radio" name="i/e" value="Extern"  /> Extern
+            <input type="radio" name="yes" id="intern" value="Intern" required onblur = "bblur(this)" onfocus = "ffocus(this)"/> Intern
+            <input type="radio" name="yes" id="extern" value="Extern" required onblur = "bblur(this)" onfocus = "ffocus(this)"/> Extern
           </label><br/><br/>
-          <label for="club">Preferred Organization/Club:</label>
-          <select name="club" id="club" required>
-              <option value="invictus">Invictus</option>
-              <option value="math">Math Club</option>
-              <option value="bakeclub">Bake Club</option>
-              <option value="labuyo">Labuyo</option>
-              <option value="exposure">Exposure</option>
-              <option value="likha">Likha</option>
-              <option value="computron">Computron</option>
-          </select><br><br>
-          <label> Why do you want to join? : 
-            <textarea name="about" id="about" onblur="missingInformation(this)" >
-              
-            </textarea>
+
+          <label> Preferred Organization/Club: 
+            <select name="Preferred" id="Preferred" required onblur = "bblur(this)" onfocus = "ffocus(this)">
+            <option value=""></option>
+            <option value="Tomorrow">Tomorrow</option>
+            <option value="Bahaghari">Bahaghari</option>
+            <option value="Alianti">Alianti</option>
+            <option value="Volant">Volant</option>
+            <option value="MUN">MUN</option> 
+            <option value="Labuyo">Labuyo</option>
+            <option value="The Science Scholar">The Science Scholar</option>
+            <option value="Lagablab">Lagablab</option>
+            <option value="Math Club">Math Club</option>
+            <option value="Invictus">Invictus</option>
+            </select>             
+          </label><br/><br/>
+
+          <label> Why do you want to join : 
+            <textarea name="reason" id="reason" required onblur = "bblur(this)" onfocus = "ffocus(this)"></textarea>
           </label><br/><br/>
           
           
-        </fieldset>  
+        </fieldset>
         <fieldset>
           <legend>Action Buttons</legend>
           <button type="submit"> Accept </button>
-          <input type="reset" value="Reset" />
+          <input type="reset" value=" Clear " />
         </fieldset> 
       </form>
     </section>
     <script>
 
-    function confirmSubmission(event) {
-    const userConfirmed = confirm("Are you sure you want to submit this form?");
-    
-    if (!userConfirmed) {
-        event.preventDefault();
-        alert("Form submission cancelled.");
-    }
-    } 
+     const KEY = 'students';
 
-    function missingInformation(ele) {
-      const elementType = ele.tagName.toLowerCase();
-      const elementId = ele.id || 'an unnamed element';
+     function loadStudents() {
+      const raw = localStorage.getItem(KEY);
 
-      if (ele.value.trim() === "") {
-        ele.style.backgroundColor = "red";
+      if (raw){  //check if raw is not null or undefined
+        return JSON.parse(raw);
+      }
+      else{
+        return []; //if undefined, empty array
+      }
+     }      
+
+
+    function saveToLocal() {
+      //get from the form
+      const studentID = document.getElementById('number').value.trim();
+      const name = document.getElementById('uname').value.trim();
+      const birth = document.getElementById('dob').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mobile = document.getElementById('phone').value.trim();
+      const gradelevel = document.getElementById('Grade').value.trim();
+      const club = document.getElementById('Preferred').value.trim();
+      const internOrExtern = (document.getElementById('intern').checked?"Intern":"Extern");
+
+      //put in object
+      const obj = {
+        studentID: studentID,
+        name: name,
+        birth: birth,
+        email: email,
+        mobile: mobile,
+        gradelevel: gradelevel,
+        club: club,
+        internOrExtern: internOrExtern
+      }
+
+      const students = loadStudents();
+      //add to array and save
+      students.push(obj);   
+      localStorage.setItem(KEY, JSON.stringify(students));
+
+
+     }
+
+    function bblur(elem) {
+      if (elem.value.trim() === "") {
+        elem.classList.remove("focus");
+        elem.classList.add("blur");
       } else {
-        ele.style.backgroundColor = "";
+        elem.classList.remove("blur");
       }
     }
 
-    function confirmReset(event) {
-    const userConfirmed = confirm("Are you sure you want to reset all the information? ");
-    
-    if (!userConfirmed) {
-        event.preventDefault();
-        alert("Form submission cancelled.");
+    function ffocus(elem) {
+      if (elem.value.trim() === "") {
+        elem.classList.remove("blur");        
+        elem.classList.add("focus");
+      } else {
+        elem.classList.remove("focus");
+      }
     }
+
+    function confirmSubmission(event){
+      const userConfirmed = confirm("Are you sure you want to submit this form?");
+      if (userConfirmed)
+      {
+        event.preventDefault();
+        saveToLocal();
+        alert("Form submission saved.");
+
+        //reset the fields for new input
+        document.getElementById('number').value = '';
+        document.getElementById('uname').value = '';
+        document.getElementById('dob').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('Grade').value = '';
+        document.getElementById('Preferred').value = '';
+        document.getElementById('intern').checked = false;
+        document.getElementById('extern').checked = false;
+        document.getElementById('reason').value = '';
+
+      }
+    
+      if (!userConfirmed) {
+          event.preventDefault();
+          alert("Form submission cancelled.");
+      }
     } 
 
-    
-    function missingInformation1(ele) {
-      console.log(ele);
-      ele.style.backgroundColor = "red";
-    }
+
+
+    function confirmReset(event) {
+      const userConfirmed = confirm("Are you sure you want to reset all the information? ");
+      
+      if (!userConfirmed) {
+          event.preventDefault();
+          alert("Form submission cancelled.");
+      }
+    } 
+
+
+ 
     </script>
+
   </body>
 </html>
